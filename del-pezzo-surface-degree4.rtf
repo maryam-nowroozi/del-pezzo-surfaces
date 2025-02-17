@@ -1,0 +1,51 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;}
+{\colortbl;\red255\green255\blue255;\red25\green25\blue25;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c12941\c12941\c12941;\csgray\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs22 \cf2 \expnd0\expndtw0\kerning0
+/* We construct the Del Pezzo surface of degree 4 by blowing up the projective plane in 5 points and then compute its invariants. Then we compute the resultants to prove that the invariants are different.\
+\pard\pardeftab720\partightenfactor0
+\cf2 R<c1,c2>:=FunctionField(Rationals(),2);\
+S<u,v>:=PolynomialRing(R,2);\
+L:=FieldOfFractions(S);\
+a:=L!u;\
+b:=L!v;\
+L<a,b>:=FunctionField(R,2);\
+P2<x,y,z>:=ProjectiveSpace(L,2);\
+p1:=P2![1,0,0];\
+p2:=P2![a^2,a,1];\
+p3:=P2![a^(-2),a^(-1),1];\
+p4:=P2![b^2,b,1];\
+p5:=P2![b^(-2),b^(-1),1];\
+PointsInGeneralPosition(P2,\{@ p1, p2, p3, p4, p5 @\});\
+D:=DelPezzoSurface(\{p1,p2,p3,p4,p5\});\
+P<[u]>:=AmbientSpace(D);\
+D;\
+F:=DefiningEquations(D);\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardeftab720\pardirnatural\partightenfactor0
+\cf3 \kerning1\expnd0\expndtw0 \CocoaLigature0 f:=F[1];              \
+g:=F[2];\
+Af:=SymmetricMatrix(f);\
+Ag:=SymmetricMatrix(g);\cf2 \expnd0\expndtw0\kerning0
+\CocoaLigature1 \
+\pard\pardeftab720\partightenfactor0
+\cf2 A:=c1*Af+c2*Ag;\
+det:=Determinant(A);\
+\
+/*The output of the computation above is a binary quintic and you can compute its invariants I_4,I_8,I_12,I_18 (in the file binary-quintic-invariants) \
+\
+J_4:=S!Numerator(I_4);\
+J_8:=S!Numerator(I_8);\
+J_12:=S!Numerator(I_12);\
+\
+\
+\
+f:=J_8-c1*J_4^2;\
+g:=J_12-c2*J_4^3;\
+\
+Resultant(f,g,u);\
+Resultant(f,g,v);}
