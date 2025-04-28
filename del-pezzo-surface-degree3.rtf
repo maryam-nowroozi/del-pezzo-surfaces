@@ -1,50 +1,37 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2821
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;}
-{\colortbl;\red255\green255\blue255;\red25\green25\blue25;}
-{\*\expandedcolortbl;;\cssrgb\c12941\c12941\c12941;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\deftab720
-\pard\pardeftab720\partightenfactor0
-
-\f0\fs22 \cf2 \expnd0\expndtw0\kerning0
-/* We construct the Del Pezzo surface of degree 3 (cubic surface) by blowing up the projective plane in 6 points and then compute its Clebsch-Salmon invariants. Then we compute the resultants to prove that the invariants are different.\
-R<c1,c2>:=FunctionField(Rationals(),2);\
-S<u,v>:=PolynomialRing(R,2);\
-L:=FieldOfFractions(S);\
-a:=L!u;\
-b:=L!v;\
-L<a,b>:=FunctionField(R,2);\
-P2<x,y,z>:=ProjectiveSpace(L,2);\
-K1 := LinearSystem(P2,3);\
-K1:=LinearSystem(K1,P2![1,0,0]);\
-K1:=LinearSystem(K1,P2![0,1,0]);\
-K1:=LinearSystem(K1,P2![a^2,a,1]);\
-K1:=LinearSystem(K1,P2![a^(-2),a^(-1),1]);\
-K1:=LinearSystem(K1,P2![b^2,b,1]);\
-K1:=LinearSystem(K1,P2![b^(-2),b^(-1),1]);\
-K1;\
-Pdeg<u1,u2,u3,u4> := ProjectiveSpace(BaseRing(P2),3);\
-phi := map< P2 -> Pdeg | Sections(K1)>;\
-S1:=Image(phi,P2,3);\
-F1:=DefiningEquations(S1)[1];\
-CS:=ClebschSalmonInvariants(F1);\
-mu:=a*b;\
-I_8:=mu^4*CS[1];\
-I_16:=mu^8*CS[2];\
-I_24:=mu^12*CS[3];\
-//I_32:=mu^16*CS[4];\
-//I_40:=mu^20*CS[5];\
-\
-J_8:=S!Numerator(I_8);\
-J_16:=S!Numerator(I_16);\
-J_24:=S!Numerator(I_24);\
-\
-assert L!J_8 eq I_8;\
-assert L!J_16 eq I_16;\
-assert L!J_24 eq I_24;\
-\
-f:=J_16-c1*J_8^2;\
-g:=J_24-c2*J_8^3;\
-\
-Resultant(f,g,u);\
-Resultant(f,g,v);}
+/* We construct the Del Pezzo surface of degree 3 (cubic surface) by blowing up the projective plane in 6 points and then compute its Clebsch-Salmon invariants. Then we compute the resultants to prove that the invariants are different.
+R<c1,c2>:=FunctionField(Rationals(),2);
+S<u,v>:=PolynomialRing(R,2);
+L:=FieldOfFractions(S);
+a:=L!u;
+b:=L!v;
+L<a,b>:=FunctionField(R,2);
+P2<x,y,z>:=ProjectiveSpace(L,2);
+K1 := LinearSystem(P2,3);
+K1:=LinearSystem(K1,P2![1,0,0]);
+K1:=LinearSystem(K1,P2![0,1,0]);
+K1:=LinearSystem(K1,P2![a^2,a,1]);
+K1:=LinearSystem(K1,P2![a^(-2),a^(-1),1]);
+K1:=LinearSystem(K1,P2![b^2,b,1]);
+K1:=LinearSystem(K1,P2![b^(-2),b^(-1),1]);
+K1;
+Pdeg<u1,u2,u3,u4> := ProjectiveSpace(BaseRing(P2),3);
+phi := map< P2 -> Pdeg | Sections(K1)>;
+S1:=Image(phi,P2,3);
+F1:=DefiningEquations(S1)[1];
+CS:=ClebschSalmonInvariants(F1);
+mu:=a*b;
+I_8:=mu^4*CS[1];
+I_16:=mu^8*CS[2];
+I_24:=mu^12*CS[3];
+//I_32:=mu^16*CS[4];
+//I_40:=mu^20*CS[5];
+J_8:=S!Numerator(I_8);
+J_16:=S!Numerator(I_16);
+J_24:=S!Numerator(I_24);
+assert L!J_8 eq I_8;
+assert L!J_16 eq I_16;
+assert L!J_24 eq I_24;
+f:=J_16-c1*J_8^2;
+g:=J_24-c2*J_8^3;
+Resultant(f,g,u);
+Resultant(f,g,v);
